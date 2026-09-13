@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e1a3a">
+<title>METEORITE 2026 | Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0e1a3a; --navy2:#16265c; --ink:#10172e; --muted:#5c6480;
+  --yellow:#ffc72c; --yellow-d:#e8a900;
+  --cream:#f7f3e9; --paper:#fffdf7; --line:#e8e0cc;
+  --green:#2c9a5b; --green-bg:#dcf3e2;
+  --pink:#c0264f; --pink-bg:#fbdde9;
+  --amber:#8a6400; --amber-bg:#fff2c4;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Poppins',system-ui,Arial,sans-serif}
+h1,h2,h3,button,.display{font-family:'Baloo 2',system-ui,sans-serif}
+.wrap{max-width:1220px;margin:0 auto;padding:16px 14px 40px}
+
+.top{background:var(--navy);color:#fff;padding:16px 18px;border-radius:16px;display:flex;justify-content:space-between;align-items:center;border-bottom:4px solid var(--yellow);flex-wrap:wrap;gap:10px}
+.top .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px}
+.top .brand svg{flex:none}
+.top small{color:#b9c4ef;font-weight:400;font-family:'Poppins'}
+.top a{color:#fff;text-decoration:none;font-weight:600;font-size:13.5px;border:1px solid #ffffff55;padding:8px 14px;border-radius:9px}
+.top a:hover{border-color:#fff}
+
+.panel{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:18px;margin-top:16px}
+.login{max-width:420px;margin:40px auto}
+.login h2{margin-top:0}
+input,select{width:100%;padding:12px 13px;border:2px solid var(--line);border-radius:10px;box-sizing:border-box;font:inherit;background:#fff;min-height:46px}
+input:focus,select:focus{outline:2px solid var(--navy2);outline-offset:1px;border-color:var(--navy2)}
+label.label{font-weight:700;font-size:13px;display:block;margin:12px 0 5px;color:var(--navy)}
+.btn{border:0;border-radius:10px;padding:11px 17px;font-weight:700;cursor:pointer;font-family:'Baloo 2';font-size:14px;min-height:42px}
+.primary{background:var(--yellow);color:var(--navy);box-shadow:0 4px 0 var(--yellow-d)}
+.danger{background:var(--pink-bg);color:var(--pink)}
+.ok{background:var(--green-bg);color:var(--green)}
+
+.row{display:grid;grid-template-columns:1fr 200px;gap:10px}
+.hidden{display:none}
+.muted{color:var(--muted);font-size:13.5px}
+.msg{margin-top:10px;font-size:13.5px;font-weight:600}
+
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;min-width:1020px;border-collapse:collapse}
+th,td{padding:12px 11px;border-bottom:1px solid var(--line);text-align:left;font-size:13px;vertical-align:top}
+th{background:#f1ecdb;font-family:'Baloo 2';font-weight:700;color:var(--navy);white-space:nowrap}
+tr:hover td{background:#fbf8ee}
+.proof{max-width:160px;max-height:120px;border-radius:8px;border:1px solid var(--line)}
+.badge{padding:5px 11px;border-radius:999px;font-weight:700;font-size:12px;display:inline-block}
+.pending{background:var(--amber-bg);color:var(--amber)}
+.confirmed{background:var(--green-bg);color:var(--green)}
+.rejected{background:var(--pink-bg);color:var(--pink)}
+.actionBtns{display:flex;gap:6px;flex-wrap:wrap}
+
+/* Mobile-first controls and record layout */
+html{-webkit-text-size-adjust:100%}
+body{min-width:320px;overflow-x:hidden;line-height:1.5}
+button,.btn,input,select,.top a{min-height:48px}
+.top a{display:inline-flex;align-items:center;justify-content:center}
+
+@media(max-width:900px){
+  .wrap{padding:12px 12px 30px}
+  .row{grid-template-columns:1fr}
+  .top{align-items:flex-start;flex-direction:column;gap:12px}
+  .top a{width:100%}
+  .panel{padding:14px;margin-top:12px}
+  input,select{font-size:16px}
+  .table{overflow:visible}
+  table,tbody,tr,td{display:block;width:100%}
+  table{min-width:0}
+  thead{display:none}
+  tr{border:2px solid var(--line);border-radius:12px;background:#fff;margin:0 0 14px;padding:4px 12px}
+  tr:hover td{background:transparent}
+  td{border-bottom:1px solid var(--line);padding:11px 0;font-size:13.5px;overflow-wrap:anywhere}
+  td:last-child{border-bottom:0}
+  td::before{content:attr(data-label);display:block;margin-bottom:3px;color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+  .proof{max-width:100%;max-height:220px}
+  .actionBtns{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actionBtns .btn{width:100%}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div>
+      <div class="brand">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 2L4 14h6l-1 8 11-14h-7l1-6z" fill="#ffc72c"/></svg>
+        METEORITE 2026 — ADMIN
+      </div>
+      <small>Payment &amp; participation verification</small>
+    </div>
+    <a href="index.html">Public site</a>
+  </div>
+
+  <div id="login" class="panel login">
+    <h2>Admin login</h2>
+    <p class="muted">Only organizer accounts should be used here.</p>
+    <label class="label">Admin email</label>
+    <input id="email" type="email" placeholder="you@example.com">
+    <label class="label">Password</label>
+    <input id="password" type="password" placeholder="Password">
+    <div style="margin-top:16px"><button class="btn primary" id="loginBtn">Sign in</button></div>
+    <div id="loginMsg" class="msg"></div>
+  </div>
+
+  <div id="dash" class="hidden">
+    <div class="panel">
+      <div class="row">
+        <input id="search" placeholder="Search name, email, event…">
+        <select id="filter">
+          <option value="all">All statuses</option>
+          <option value="pending">Pending</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="rejected">Rejected</option>
+        </select>
+      </div>
+    </div>
+    <div class="panel">
+      <h2 style="margin-top:0">Registrations</h2>
+      <p class="muted">Payment screenshots are loaded through Firebase Storage only for an authenticated admin.</p>
+      <div class="table">
+        <table>
+          <thead><tr><th>Participant</th><th>Event</th><th>Contact</th><th>Payment proof</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import {getFirestore,collection,onSnapshot,query,orderBy,doc,updateDoc} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import {getStorage,ref,getDownloadURL} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
+const firebaseConfig={apiKey:"YOUR_API_KEY",authDomain:"YOUR_PROJECT.firebaseapp.com",projectId:"YOUR_PROJECT_ID",storageBucket:"YOUR_PROJECT.firebasestorage.app",messagingSenderId:"YOUR_SENDER_ID",appId:"YOUR_APP_ID"};
+const configured=!Object.values(firebaseConfig).some(v=>v.startsWith("YOUR_"));
+let db,auth,storage,unsub=null,items=[];
+if(configured){const app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);storage=getStorage(app);}
+
+document.getElementById('loginBtn').onclick=async()=>{
+  if(!configured){document.getElementById('loginMsg').textContent='Add Firebase config first.';return}
+  try{await signInWithEmailAndPassword(auth,document.getElementById('email').value,document.getElementById('password').value)}
+  catch(e){document.getElementById('loginMsg').textContent='Login failed.'}
+};
+onAuthStateChanged(auth||{onAuthStateChanged:()=>{}},async user=>{
+ if(!user)return;
+ document.getElementById('login').classList.add('hidden');document.getElementById('dash').classList.remove('hidden');
+ unsub=onSnapshot(query(collection(db,'registrations'),orderBy('createdAt','desc')),snap=>{items=snap.docs.map(d=>({id:d.id,...d.data()}));render()},err=>{document.getElementById('rows').innerHTML=`<tr><td colspan="6">Access denied. Add this user's UID to the admins collection and publish the rules from SETUP.md.</td></tr>`});
+});
+async function setStatus(id,status){await updateDoc(doc(db,'registrations',id),{status,reviewedAt:new Date(),reviewedBy:auth.currentUser.uid})}
+async function proof(path){try{return await getDownloadURL(ref(storage,path))}catch{return ''}}
+async function render(){
+  const q=document.getElementById('search').value.toLowerCase(),f=document.getElementById('filter').value;
+  const list=items.filter(x=>(f==='all'||x.status===f)&&(!q||`${x.participantName} ${x.email} ${x.event}`.toLowerCase().includes(q)));
+  let html='';
+  for(const x of list){
+    const url=x.paymentScreenshotPath?await proof(x.paymentScreenshotPath):'';
+    html+=`<tr><td data-label="Participant"><b>${x.participantName||''}</b><br>${x.college||''}<br>${x.department||''}${x.yearOfStudy?` · ${x.yearOfStudy}`:''}<br>Team: ${x.teamName||'-'}</td><td data-label="Event">${x.event||''}</td><td data-label="Contact">${x.phone||''}<br>${x.email||''}<br>Ref: ${x.paymentReference||'-'}</td><td data-label="Payment proof">${url?`<a href="${url}" target="_blank"><img class="proof" src="${url}" alt="Payment proof"></a>`:'Not available'}</td><td data-label="Status"><span class="badge ${x.status}">${x.status||'pending'}</span></td><td data-label="Action"><div class="actionBtns"><button class="btn ok" onclick="setStatus('${x.id}','confirmed')">Confirm</button><button class="btn danger" onclick="setStatus('${x.id}','rejected')">Reject</button></div></td></tr>`;
+  }
+  document.getElementById('rows').innerHTML=html||'<tr><td colspan="6">No registrations found.</td></tr>';
+}
+document.getElementById('search').oninput=render;document.getElementById('filter').onchange=render;window.setStatus=setStatus;
+</script>
+</body></html>

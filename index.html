@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e1a3a">
+<title>METEORITE 2026 | ACES Event Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Baloo+2:wght@500;700;800&family=Caveat:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0e1a3a; --navy2:#16265c; --ink:#10172e; --muted:#5c6480;
+  --yellow:#ffc72c; --yellow-d:#e8a900;
+  --cream:#f7f3e9; --paper:#fffdf7; --line:#e8e0cc;
+  --blue:#2f8fd6; --blue-bg:#d9edfb;
+  --green:#2c9a5b; --green-bg:#dcf3e2;
+  --pink:#d13a72; --pink-bg:#fbdde9;
+  --purple:#6e4fc9; --purple-bg:#e7e0fb;
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Poppins',system-ui,Arial,sans-serif;overflow-x:hidden}
+h1,h2,h3,.display{font-family:'Baloo 2',system-ui,sans-serif}
+.script{font-family:'Caveat',cursive}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+img{max-width:100%;display:block}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:30;background:var(--navy);border-bottom:4px solid var(--yellow)}
+.nav{max-width:1180px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 14px}
+.brand{display:flex;align-items:center;gap:8px;color:#fff;font-family:'Baloo 2';font-weight:800;font-size:17px;letter-spacing:.3px}
+.brand svg{flex:none}
+.brand b{color:var(--yellow)}
+nav.links{display:flex;flex-wrap:wrap;gap:4px 16px}
+nav.links a{color:#dfe6ff;text-decoration:none;font-weight:600;font-size:13.5px;transition:color .15s;padding:4px 0}
+nav.links a:hover{color:var(--yellow)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);overflow:hidden;padding:40px 0 36px}
+.hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(1.5px 1.5px at 20% 30%, #ffffff55 0, transparent 60%),radial-gradient(1.5px 1.5px at 70% 20%, #ffffff44 0, transparent 60%),radial-gradient(1px 1px at 85% 65%, #ffffff33 0, transparent 60%),radial-gradient(1.5px 1.5px at 40% 80%, #ffffff33 0, transparent 60%),radial-gradient(1px 1px at 55% 45%, #ffffff2e 0, transparent 60%);pointer-events:none}
+.heroGrid{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+.eyebrow{color:#a9baf0;font-size:12.5px;font-weight:600;letter-spacing:.4px}
+.eyebrow b{color:#fff}
+.wordmark{margin:8px 0 4px;line-height:.86}
+.wordmark .top{display:block;font-family:'Luckiest Guy',cursive;color:#fff;font-size:clamp(38px,10vw,84px);letter-spacing:1px;text-shadow:4px 4px 0 #00000030}
+.wordmark .year{display:block;font-family:'Luckiest Guy',cursive;color:var(--yellow);font-size:clamp(38px,10vw,84px);letter-spacing:1px;text-shadow:4px 4px 0 #00000030}
+.heroSub{color:#cfd8f7;max-width:520px;font-size:15px;line-height:1.6;margin:12px 0 20px}
+.heroActions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:12px;padding:13px 18px;font-family:'Baloo 2';font-weight:700;font-size:14.5px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:transform .12s ease;min-height:46px}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--yellow);color:var(--navy);box-shadow:0 6px 0 var(--yellow-d)}
+.btn.ghost{background:transparent;color:#fff;border:2px solid #ffffff55}
+.btn.ghost:hover{border-color:#fff}
+.btn.dark{background:var(--navy);color:#fff;box-shadow:0 6px 0 #060d20}
+.btn.block{width:100%;justify-content:center}
+
+.stickies{position:absolute;font-family:'Caveat';font-weight:700;color:var(--navy);background:var(--yellow);padding:7px 13px;border-radius:5px 14px 5px 14px;font-size:17px;box-shadow:0 6px 14px #00000030;line-height:1.15;white-space:nowrap}
+.sticky1{top:14px;left:4px;transform:rotate(-9deg)}
+.sticky2{top:6px;right:8px;transform:rotate(7deg)}
+
+.posterWrap{position:relative;display:flex;justify-content:center}
+.posterCard{background:#fff;padding:9px;border-radius:14px;transform:rotate(2deg);box-shadow:0 22px 50px #00000045;max-width:320px;width:100%}
+.posterCard img{border-radius:8px}
+.tape{position:absolute;width:60px;height:24px;background:#ffffffb0;border:1px solid #ffffff70;top:-9px;left:calc(50% - 30px);transform:rotate(-3deg);box-shadow:0 2px 5px #00000020}
+
+/* ---------- info ribbon ---------- */
+.ribbon{background:var(--yellow);color:var(--navy);border-top:4px solid var(--navy);border-bottom:4px solid var(--navy)}
+.ribbonInner{max-width:1180px;margin:0 auto;padding:12px 16px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:center;font-family:'Baloo 2';font-weight:700;font-size:13.5px;text-align:center}
+.ribbonInner span{display:flex;align-items:center;gap:6px}
+
+/* ---------- sections ---------- */
+.sec{max-width:1180px;margin:42px auto;padding:0 16px}
+.sechead{margin-bottom:18px;text-align:left}
+.sechead h2{margin:0 0 4px;font-size:26px;color:var(--navy)}
+.sechead .muted{color:var(--muted);font-size:14px}
+
+.tabRow{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tab{font-family:'Baloo 2';font-weight:700;border:2px solid var(--navy);background:var(--paper);color:var(--navy);padding:10px 16px;border-radius:10px;cursor:pointer;font-size:14px;min-height:44px}
+.tab.active{background:var(--navy);color:#fff}
+.filters{display:grid;grid-template-columns:1fr 170px;gap:10px;margin-bottom:20px}
+input,select,textarea{width:100%;padding:12px 13px;border:2px solid var(--line);border-radius:11px;background:var(--paper);font:inherit;color:var(--ink);min-height:46px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--navy2);outline-offset:1px;border-color:var(--navy2)}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--paper);border:2px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-height:300px;position:relative;transition:transform .15s ease, box-shadow .15s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 28px #10172e14}
+.cardImg{height:100px;position:relative;display:flex;align-items:center;justify-content:center}
+.cardImg:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,#ffffff35 2px,transparent 2px);background-size:15px 15px}
+.cardImg .glyph{position:relative;z-index:1;font-size:32px;width:58px;height:58px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px #00000024}
+.cardBody{padding:15px 17px 17px;display:flex;flex-direction:column;flex:1}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;margin-bottom:6px;letter-spacing:.2px;align-self:flex-start}
+.card h3{margin:2px 0 6px;font-size:17px;line-height:1.25}
+.card p{color:var(--muted);font-size:13.5px;line-height:1.5;margin:0}
+.meta{margin-top:auto;border-top:1px dashed var(--line);padding-top:11px;font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+.feeLine{font-weight:700;color:var(--navy)}
+.cardBtns{display:flex;gap:8px;margin-top:13px}
+.mini{flex:1;padding:10px;border:2px solid var(--navy);background:var(--paper);color:var(--navy);border-radius:10px;font-family:'Baloo 2';font-weight:700;font-size:13.5px;cursor:pointer;min-height:42px}
+.mini.dark{background:var(--navy);color:#fff}
+
+.cat-technical .cardImg{background:linear-gradient(135deg,var(--blue),#8fd0fb)}
+.cat-technical .tag{background:var(--blue-bg);color:var(--blue)}
+.cat-presentation .cardImg{background:linear-gradient(135deg,var(--green),#8fe0ac)}
+.cat-presentation .tag{background:var(--green-bg);color:var(--green)}
+.cat-sports .cardImg{background:linear-gradient(135deg,var(--pink),#f7a8c6)}
+.cat-sports .tag{background:var(--pink-bg);color:var(--pink)}
+.cat-fun .cardImg{background:linear-gradient(135deg,var(--purple),#c2acf5)}
+.cat-fun .tag{background:var(--purple-bg);color:var(--purple)}
+
+.empty{grid-column:1/-1;text-align:center;padding:36px 18px;color:var(--muted);border:2px dashed var(--line);border-radius:16px;background:var(--paper)}
+
+/* ---------- how it works ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative}
+.step{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:20px;position:relative;z-index:1}
+.stepNum{width:32px;height:32px;border-radius:50%;background:var(--navy);color:var(--yellow);font-family:'Baloo 2';font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.step h3{margin:0 0 6px;font-size:16px}
+.step p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5}
+.stepsWrap{position:relative}
+.dashLine{position:absolute;top:37px;left:11%;right:11%;height:0;border-top:3px dashed var(--yellow-d);z-index:0}
+
+/* ---------- footer ---------- */
+footer{margin-top:52px;background:var(--navy);color:#c9d2f0;padding:30px 0 22px;border-top:5px solid var(--yellow)}
+.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.foot b{color:#fff;font-family:'Baloo 2'}
+.foot .script{color:var(--yellow);font-size:20px}
+.footLinks a{color:#c9d2f0;text-decoration:none;margin-right:14px;font-size:13.5px}
+.footLinks a:hover{color:var(--yellow)}
+.footBottom{max-width:1180px;margin:20px auto 0;padding:14px 16px 0;border-top:1px solid #ffffff22;font-size:11.5px;color:#8b96c2;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* ---------- modal ---------- */
+.modal{display:none;position:fixed;inset:0;background:#0a1128cc;z-index:60;padding:0;align-items:flex-end;justify-content:center}
+.modal.show{display:flex}
+.modalBox{background:var(--paper);border-radius:20px 20px 0 0;padding:22px 18px calc(22px + env(safe-area-inset-bottom));max-width:640px;width:100%;max-height:92vh;overflow:auto;position:relative;border:2px solid var(--navy);border-bottom:none}
+.x{position:absolute;right:14px;top:8px;border:0;background:none;font-size:26px;cursor:pointer;color:var(--navy);font-family:'Baloo 2';min-width:36px;min-height:36px}
+.formGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.full{grid-column:1/-1}
+.label{font-weight:700;font-size:13px;display:block;margin-bottom:5px;color:var(--navy)}
+.notice{padding:12px 14px;border-radius:11px;background:#fff2c4;border:2px solid var(--yellow-d);font-size:13px;margin:14px 0;color:#5c4700}
+.success{color:#1a7d3f;font-weight:600}
+.error{color:#c0264f;font-weight:600}
+.small{font-size:12px;color:var(--muted)}
+
+.payBox{border:2px solid var(--line);border-radius:14px;padding:14px;margin:14px 0;background:#fff}
+.payBox .feeInfo{font-family:'Baloo 2';font-weight:700;color:var(--navy);font-size:15px;margin-bottom:10px}
+.payMethods{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.payCard{border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;background:var(--cream)}
+.payCard img{border-radius:8px;margin:0 auto 8px}
+.payCard .who{font-weight:700;font-size:12.5px;color:var(--navy)}
+.payCard .upi{font-size:11px;color:var(--muted);word-break:break-all}
+
+/* ---------- mobile-first refinements ---------- */
+html{font-size:100%;-webkit-text-size-adjust:100%}
+body{min-width:320px;line-height:1.5}
+button,.btn,.mini,input,select,textarea{min-height:48px}
+button,.btn,.mini{touch-action:manipulation}
+.menuToggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:48px;min-height:48px;padding:8px 12px;border:2px solid #ffffff55;border-radius:10px;background:transparent;color:#fff;font:700 14px 'Baloo 2',system-ui,sans-serif;cursor:pointer}
+.menuToggle:hover,.menuToggle[aria-expanded="true"]{border-color:var(--yellow);color:var(--yellow)}
+.menuIcon{font-size:20px;line-height:1}
+.howDetails{display:block}
+.howDetails summary{display:none}
+
+@media(max-width:900px){
+  .wrap{padding-inline:16px}
+  header{border-bottom-width:3px}
+  .nav{padding:8px 16px;flex-wrap:wrap;gap:8px;align-items:center}
+  .brand{font-size:16px;min-height:48px}
+  nav.links{display:none;order:3;flex-basis:100%;flex-direction:column;gap:4px;padding:8px 0 4px}
+  nav.links.open{display:flex}
+  nav.links a{display:flex;align-items:center;min-height:48px;padding:10px 14px;border-radius:10px;background:#ffffff12;font-size:15px}
+  .hero{padding:26px 0 30px}
+  .heroGrid{gap:18px}
+  .posterWrap{max-width:230px;margin-bottom:2px}
+  .stickies{font-size:14px;padding:5px 9px}
+  .sticky1{top:2px;left:0}.sticky2{top:0;right:0}
+  .eyebrow{font-size:12px;padding-right:12px}
+  .wordmark .top,.wordmark .year{font-size:clamp(2.65rem,16vw,4.1rem)}
+  .heroSub{font-size:0.98rem;line-height:1.65;margin:14px 0 20px}
+  .heroActions{display:grid;grid-template-columns:1fr;gap:12px}
+  .heroActions .btn{width:100%;justify-content:center}
+  .ribbonInner{display:grid;grid-template-columns:1fr;gap:4px;padding:10px 16px;font-size:13px}
+  .ribbonInner span{justify-content:center;min-height:30px}
+  .sec{margin:32px auto;padding:0 16px}
+  .sechead{margin-bottom:14px}.sechead h2{font-size:clamp(1.45rem,7vw,1.9rem);line-height:1.2}.sechead .muted{font-size:.92rem;line-height:1.55}
+  .tabRow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tab{width:100%;min-height:48px;padding:10px 8px}
+  .filters{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:16px}
+  input,select,textarea{font-size:16px;padding:12px 13px}
+  .grid{grid-template-columns:1fr;gap:14px}.card{min-height:0}.cardImg{height:92px}.cardBody{padding:15px}
+  .card h3{font-size:1.1rem}.card p{font-size:.92rem;line-height:1.55}.meta{font-size:.84rem;gap:5px}
+  .cardBtns{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mini{min-height:48px;padding:10px 8px}
+  .howDetails{border:2px solid var(--line);border-radius:14px;background:var(--paper);padding:0 14px}
+  .howDetails summary{display:flex;align-items:center;min-height:52px;color:var(--navy);font-family:'Baloo 2',system-ui,sans-serif;font-weight:800;cursor:pointer;list-style:none}
+  .howDetails summary::-webkit-details-marker{display:none}.howDetails summary::after{content:'+';margin-left:auto;font-size:24px}.howDetails[open] summary::after{content:'−'}
+  .howDetails .stepsWrap{padding:4px 0 14px}.steps{gap:10px}.step{padding:16px}.step p{font-size:.92rem}.stepNum{width:36px;height:36px}
+  footer{margin-top:36px;padding:24px 0 18px}.foot{display:grid;gap:18px}.footLinks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.footLinks a{display:flex;align-items:center;justify-content:center;min-height:48px;margin:0;padding:8px;border:1px solid #ffffff33;border-radius:9px}.footBottom{font-size:.75rem;display:grid;gap:4px}
+  .modal{background:transparent;pointer-events:none}.modalBox{pointer-events:auto;max-height:88dvh;border-radius:18px 18px 0 0;padding:24px 16px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -10px 32px #00000033}.x{min-width:48px;min-height:48px;right:6px;top:3px}.modalBox h2{font-size:clamp(1.35rem,7vw,1.75rem);padding-right:40px;line-height:1.2}.formGrid,.payMethods{grid-template-columns:1fr;gap:14px}.full{grid-column:auto}.payBox{padding:12px}.payCard{padding:12px}.payCard img{max-width:min(100%,220px)}
+}
+@media(min-width:901px){.menuToggle{display:none}}
+@media(max-width:380px){.brand{font-size:14px}.brand svg{width:21px;height:21px}.cardBtns{grid-template-columns:1fr}.footLinks{grid-template-columns:1fr}.posterWrap{max-width:205px}}
+
+@media(min-width:641px){
+  .modal{align-items:center;padding:18px}
+  .modalBox{border-radius:18px;border-bottom:2px solid var(--navy)}
+}
+@media(max-width:900px){
+  .heroGrid{grid-template-columns:1fr}
+  .posterWrap{order:-1;margin-bottom:4px;max-width:280px;margin-left:auto;margin-right:auto}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr;gap:14px}
+  .dashLine{display:none}
+}
+@media(max-width:600px){
+  .nav{justify-content:center;text-align:center}
+  .grid{grid-template-columns:1fr}
+  .filters,.formGrid,.payMethods{grid-template-columns:1fr}
+  .full{grid-column:auto}
+  .heroActions .btn{flex:1}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 2L4 14h6l-1 8 11-14h-7l1-6z" fill="#ffc72c"/></svg>
+      METEORITE <b>2026</b>
+    </div>
+    <button class="menuToggle" type="button" aria-expanded="false" aria-controls="primary-nav"><span class="menuIcon" aria-hidden="true">☰</span><span>Menu</span></button>
+    <nav class="links" id="primary-nav">
+      <a href="#events">Events</a>
+      <a href="#register">Register</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap heroGrid">
+    <div>
+      <div class="stickies sticky1">Different Games,<br>Same Fun!</div>
+      <div class="eyebrow"><b>Bhujbal Knowledge City</b> · ACES presents</div>
+      <h1 class="wordmark"><span class="top">METEORITE</span><span class="year">2026</span></h1>
+      <p class="heroSub">One hub for every competition, game, project and presentation across two days. Pick your event, register on your phone, and upload your payment proof for admin verification.</p>
+      <div class="heroActions">
+        <a class="btn primary" href="#events">Explore events ↓</a>
+        <a class="btn ghost" href="#register">How to register</a>
+      </div>
+    </div>
+    <div class="posterWrap">
+      <div class="stickies sticky2">Your Skills,<br>Your Game!</div>
+      <div class="posterCard">
+        <div class="tape"></div>
+        <img src="meteorite-poster.jpg" alt="METEORITE 2026 event poster">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon"><div class="ribbonInner">
+  <span>📅 17&nbsp;&amp;&nbsp;18 September 2026</span>
+  <span>📍 Venue as per each event</span>
+  <span>🎓 ACES · E&amp;TC Department</span>
+</div></div>
+
+<section class="sec" id="events">
+  <div class="sechead"><h2>Choose your event</h2><div class="muted">Search, filter by category, and register directly from the card.</div></div>
+  <div class="tabRow">
+    <button class="tab active" data-day="17">17 September</button>
+    <button class="tab" data-day="18">18 September</button>
+  </div>
+  <div class="filters">
+    <input id="search" placeholder="Search event or venue…">
+    <select id="cat">
+      <option value="all">All categories</option>
+      <option value="technical">Technical</option>
+      <option value="presentation">Presentation</option>
+      <option value="sports">Sports</option>
+      <option value="fun">Fun / Team</option>
+    </select>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="sec" id="register">
+  <div class="sechead"><h2>How registration works</h2><div class="muted">Your payment screenshot stays private — only an authorized admin can view it, once Firebase security rules are enabled.</div></div>
+  <details class="howDetails" open><summary>Show registration steps</summary><div class="stepsWrap">
+    <div class="dashLine"></div>
+    <div class="steps">
+      <div class="step"><div class="stepNum">1</div><h3>Pick your event</h3><p>Browse the list above and open Register on the event you want to join.</p></div>
+      <div class="step"><div class="stepNum">2</div><h3>Pay &amp; upload proof</h3><p>Scan either QR code shown in the form, then upload a clear screenshot.</p></div>
+      <div class="step"><div class="stepNum">3</div><h3>Admin confirms</h3><p>An organizer checks the screenshot and marks your entry Confirmed or Rejected.</p></div>
+    </div>
+  </div></details>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div><b>METEORITE 2026</b><br>ACES · Association of Communication &amp; Electronics Students<br>Bhujbal Knowledge City, Mumbai Educational Trust</div>
+    <div class="footLinks"><a href="#events">Events</a><a href="#register">Register</a><a href="admin.html">Admin</a></div>
+  </div>
+  <div class="wrap script">One Team, One Vibe!</div>
+  <div class="footBottom"><span>© 2026 ACES</span><span>Come be a part of the fun 🚀</span></div>
+</footer>
+
+<div class="modal" id="modal"><div class="modalBox"><button class="x" onclick="closeModal()">×</button><div id="content"></div></div></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
+
+const firebaseConfig = {
+  apiKey:"YOUR_API_KEY", authDomain:"YOUR_PROJECT.firebaseapp.com",
+  projectId:"YOUR_PROJECT_ID", storageBucket:"YOUR_PROJECT.firebasestorage.app",
+  messagingSenderId:"YOUR_SENDER_ID", appId:"YOUR_APP_ID"
+};
+
+const configured = !Object.values(firebaseConfig).some(v=>v.startsWith("YOUR_"));
+let app,auth,db,storage;
+if(configured){
+  app=initializeApp(firebaseConfig); auth=getAuth(app); db=getFirestore(app); storage=getStorage(app);
+}
+
+// Events, fees and group sizes taken from the organizer's registration form.
+const events=[
+{day:17,name:"Circuit Simulation Competition",icon:"🔌",cat:"technical",venue:"Lab 411",desc:"Test circuit design and simulation skills.",fee:30,unit:"head"},
+{day:17,name:"CEP Poster Competition",icon:"🤝",cat:"technical",venue:"Lab 413",desc:"Present your community engagement project through a poster.",fee:50,unit:"group",teamSize:3},
+{day:17,name:"Project Poster Competition",icon:"📌",cat:"presentation",venue:"Lab 409",desc:"Explain your project through an engaging poster.",fee:50,unit:"group",teamSize:3},
+{day:17,name:"Carrom Tournament",icon:"🪙",cat:"sports",venue:"Sports Room",desc:"Compete in the carrom tournament.",fee:80,unit:"head"},
+{day:17,name:"Pool Game",icon:"🎱",cat:"sports",venue:"Sports Room",desc:"Show your precision and game skills.",fee:120,unit:"head"},
+{day:17,name:"Beg Borrow Jugad",icon:"🔧",cat:"fun",venue:"Amphitheater",desc:"A creative challenge based on quick thinking and jugaad.",fee:200,unit:"group",teamSize:4},
+{day:17,name:"Mini Militia",icon:"🕹️",cat:"fun",venue:"Lab 409",desc:"Team up and compete in this gaming activity.",fee:120,unit:"group",teamSize:4},
+{day:18,name:"Project Competition",icon:"💡",cat:"technical",venue:"Lab 409",desc:"Showcase your engineering project.",fee:100,unit:"group",teamSize:3},
+{day:18,name:"Rescue Your Friend",icon:"🏃",cat:"fun",venue:"Lawns near Canteen",desc:"A teamwork-based coordination challenge.",fee:100,unit:"group",teamSize:3},
+{day:18,name:"Paper Presentation Competition",icon:"📄",cat:"presentation",venue:"Room No. 403",desc:"Present your technical topic clearly.",fee:50,unit:"group",teamSize:3},
+{day:18,name:"Cricket Super Over",icon:"🏏",cat:"sports",venue:"Cricket Turf",desc:"A fast, high-energy cricket competition.",fee:70,unit:"head"},
+{day:18,name:"Quiz Competition",icon:"❓",cat:"fun",venue:"Venue TBA",desc:"Test your general knowledge and quick thinking.",fee:50,unit:"head"}
+];
+
+function feeLabel(e){ return e.unit==='head' ? `₹${e.fee} per head` : `₹${e.fee} per group of ${e.teamSize}`; }
+
+let day=17;
+function render(){
+  const q=document.getElementById('search').value.toLowerCase(), c=document.getElementById('cat').value;
+  const a=events.filter(e=>e.day===day && (c==='all'||e.cat===c) && (!q||e.name.toLowerCase().includes(q)||e.venue.toLowerCase().includes(q)));
+  document.getElementById('grid').innerHTML = a.length ? a.map(e=>`
+    <article class="card cat-${e.cat}">
+      <div class="cardImg"><div class="glyph">${e.icon}</div></div>
+      <div class="cardBody">
+        <div class="tag">${e.cat}</div>
+        <h3>${e.name}</h3>
+        <p>${e.desc}</p>
+        <div class="meta"><span class="feeLine">${feeLabel(e)}</span><span>📅 ${e.day} September 2026</span><span>📍 ${e.venue}</span></div>
+        <div class="cardBtns">
+          <button class="mini" onclick="window.details('${e.name.replace(/'/g,"\\'")}')">Details</button>
+          <button class="mini dark" onclick="window.openRegister('${e.name.replace(/'/g,"\\'")}')">Register</button>
+        </div>
+      </div>
+    </article>`).join('') : '<div class="empty">No matching events. Try a different search or category.</div>';
+}
+
+window.closeModal=()=>document.getElementById('modal').classList.remove('show');
+
+window.details=(name)=>{
+  const e=events.find(x=>x.name===name);
+  document.getElementById('content').innerHTML=`
+    <div class="cardImg cat-${e.cat}" style="border-radius:12px;margin-bottom:12px"><div class="glyph" style="font-size:28px">${e.icon}</div></div>
+    <div class="tag">${e.cat}</div>
+    <h2 style="margin:6px 0">${e.name}</h2>
+    <p class="muted">${e.desc}</p>
+    <p style="line-height:1.9">💰 <b>${feeLabel(e)}</b><br>📅 <b>${e.day} September 2026</b><br>📍 <b>${e.venue}</b></p>
+    <button class="btn primary block" onclick="window.openRegister('${e.name.replace(/'/g,"\\'")}')">Register</button>`;
+  document.getElementById('modal').classList.add('show');
+};
+
+window.openRegister=(eventName='')=>{
+ const first = events.find(e=>e.name===eventName) || events[0];
+ document.getElementById('content').innerHTML=`<h2>Register for METEORITE 2026</h2>
+ <form id="regForm"><div class="formGrid">
+ <div><label class="label">Full name *</label><input name="name" required></div>
+ <div><label class="label">Team name</label><input name="team"></div>
+ <div><label class="label">College name *</label><input name="college" required></div>
+ <div><label class="label">Branch *</label><input name="department" required></div>
+ <div><label class="label">Mobile no *</label><input name="phone" inputmode="tel" required></div>
+ <div><label class="label">Email *</label><input name="email" type="email" required></div>
+ <div class="full"><label class="label">Year of study *</label><select name="yearOfStudy" required><option value="">Choose</option><option>First Year</option><option>Second Year</option><option>Third Year</option><option>Fourth Year</option></select></div>
+ <div class="full"><label class="label">Choose competition *</label><select name="event" id="eventSelect" required>${events.map(e=>`<option value="${e.name}" ${e.name===first.name?'selected':''}>${e.name} (${feeLabel(e)})</option>`).join('')}</select></div>
+ </div>
+
+ <div class="payBox">
+   <div class="feeInfo" id="feeInfo">Amount to pay: ${feeLabel(first)}</div>
+   <p class="small" style="margin-top:0">Scan either QR code below, then upload your payment screenshot.</p>
+   <div class="payMethods">
+     <div class="payCard"><img src="qr-phonepe.png" alt="PhonePe payment QR"><div class="who">PhonePe · Kapadne Sharvil Manoj</div></div>
+     <div class="payCard"><img src="qr-googlepay.png" alt="Google Pay payment QR"><div class="who">Google Pay · Aayush Tapse</div><div class="upi">aayushtapse05@oksbi</div></div>
+   </div>
+ </div>
+
+ <div class="formGrid">
+ <div class="full"><label class="label">Payment reference / UTR</label><input name="paymentReference" placeholder="Optional, if available"></div>
+ <div class="full"><label class="label">Payment screenshot *</label><input name="proof" type="file" accept="image/png,image/jpeg,image/webp" required><div class="small">Image only, max 10 MB. Do not upload card numbers, passwords or unrelated documents.</div></div>
+ </div>
+ <button class="btn primary block" type="submit" style="margin-top:14px">Submit registration</button><p id="formMsg"></p></form>`;
+ document.getElementById('modal').classList.add('show');
+ document.getElementById('regForm').onsubmit=submitRegistration;
+ document.getElementById('eventSelect').onchange=(ev)=>{
+   const e=events.find(x=>x.name===ev.target.value);
+   document.getElementById('feeInfo').textContent=`Amount to pay: ${feeLabel(e)}`;
+ };
+};
+
+async function submitRegistration(ev){
+ ev.preventDefault(); const form=ev.target,msg=document.getElementById('formMsg');msg.textContent='Submitting…';
+ if(!configured){msg.className='error';msg.textContent='Firebase is not configured yet. Add your Firebase web config in index.html, then deploy.';return;}
+ const f=new FormData(form),file=f.get('proof');
+ if(!file||!file.type.startsWith('image/')){msg.className='error';msg.textContent='Please select a valid image screenshot.';return;}
+ if(file.size>10*1024*1024){msg.className='error';msg.textContent='Please keep the screenshot under 10 MB.';return;}
+ try{
+   const cred=await signInAnonymously(auth);
+   const uid=cred.user.uid;
+   const doc=await addDoc(collection(db,'registrations'),{participantName:f.get('name'),teamName:f.get('team'),college:f.get('college'),department:f.get('department'),yearOfStudy:f.get('yearOfStudy'),phone:f.get('phone'),email:f.get('email'),event:f.get('event'),paymentReference:f.get('paymentReference'),status:'pending',uid,createdAt:serverTimestamp()});
+   const path=`paymentProof/${uid}/${doc.id}-${Date.now()}`;
+   await uploadBytes(ref(storage,path),file,{contentType:file.type});
+   const {doc:docRef,updateDoc}=await import("https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js");
+   await updateDoc(docRef(db,'registrations',doc.id),{paymentScreenshotPath:path});
+   msg.className='success';msg.textContent='Registration submitted successfully. Status: Pending verification.';
+   form.reset();
+ }catch(e){console.error(e);msg.className='error';msg.textContent='Submission failed. Please check the Firebase setup and try again.';}
+}
+
+const menuToggle=document.querySelector('.menuToggle'), primaryNav=document.getElementById('primary-nav');
+menuToggle.onclick=()=>{const open=primaryNav.classList.toggle('open');menuToggle.setAttribute('aria-expanded',open);menuToggle.querySelector('.menuIcon').textContent=open?'×':'☰';};
+primaryNav.querySelectorAll('a').forEach(link=>link.onclick=()=>{primaryNav.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.querySelector('.menuIcon').textContent='☰';});
+if(window.matchMedia('(max-width: 900px)').matches) document.querySelector('.howDetails').removeAttribute('open');
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');day=+b.dataset.day;render()});
+document.getElementById('search').oninput=render;
+document.getElementById('cat').onchange=render;
+render();
+</script>
+</body></html>
